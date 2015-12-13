@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LinqDatabase" Class="LinqDatabaseClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Data\LinqDatabase.mdf;Integrated Security=True" SettingsObjectName="LinqTest01.Properties.Settings" SettingsPropertyName="LinqDatabaseConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Person" Member="Persons">
+    <Type Name="Person">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="LastName" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Age" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="PlaceId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Place_Person" Member="Place" ThisKey="PlaceId" OtherKey="Id" Type="Place" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Place" Member="Places">
+    <Type Name="Place">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="ZipCode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Place_Person" Member="Persons" ThisKey="Id" OtherKey="PlaceId" Type="Person" />
+    </Type>
+  </Table>
+</Database>
